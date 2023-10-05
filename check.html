@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="check()">check</button>
+    <div id="d1"></div>
+    <div id="d2"></div>
+    <div id="d3"></div>
+    <div id="d4"></div>
+    <div id="d5"></div>
+    <div id="d6"></div>
+</body>
+<script>
+    let d1 = document.getElementById("d1")
+    let d2 = document.getElementById("d2")
+    let d3 = document.getElementById("d3")
+    let d4 = document.getElementById("d4")
+    let d5 = document.getElementById("d5")
+    let d6 = document.getElementById("d6")
+
+    function check() {
+        let sent = prompt("press");
+        d1.innerHTML = `let the string you enter is ${sent}`
+        const length = sent.length
+        let a = `the length of the string is ${length}`
+        d2.innerHTML = a
+        const be  = sent.toLowerCase()
+        d3.innerHTML = be
+        const u = sent.toUpperCase()
+        d4.innerHTML = u
+        if(sen.toLowerCase().includes("javascript")) {
+            d5.innerHTML = `the string you entered contain "javascript"`
+        } else {
+            d5.innerHTML = `the string you entered does not contain "javascript"`
+        }
+        let index = sent.indexof('a')
+        d6.innerHTML = `the index of 'a' in the string is ${index}`;
+    }
+</script>
+</html>

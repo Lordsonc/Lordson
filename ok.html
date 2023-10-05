@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)file:///Users/macbook/Downloads/ok%20(1).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="file:///Users/macbook/Downloads/styles.css">
+    <title>document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Registration</h1>
+      <form id="registration-form">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" required=""><br><br>
+
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" required=""><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required=""><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required=""><br><br>
+
+        <button type="submit">Register</button>
+      </form>
+      <p id="message" class="hidden">
+        Email already exists. Please use a different email.
+      </p>
+    </div>
+
+    <div class="container">
+      <h1>Login</h1>
+      <form id="login-form">
+        <label for="login-email">Email:</label>
+        <input type="email" id="login-email" required=""><br><br>
+
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" required=""><br><br>
+
+        <button type="submit">Login</button>
+      </form>
+      <p id="login-message" class="hidden">
+        Invalid email or password. Please try again.
+      </p>
+    </div>
+
+    <div class="container">
+      <h1>Password Reset</h1>
+      <form id="reset-form">
+        <label for="reset-email">Email:</label>
+        <input type="email" id="reset-email" required=""><br><br>
+
+        <label for="new-password">New Password:</label>
+        <input type="password" id="new-password" required=""><br><br>
+
+        <button type="submit">Reset Password</button>
+      </form>
+      <p id="reset-message" class="hidden">Password reset successful!</p>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const registrationForm = document.getElementById("registration-form");
+        const loginForm = document.getElementById("login-form");
+        const resetForm = document.getElementById("reset-form");
+        const message = document.getElementById("message");
+        const loginMessage = document.getElementById("login-message");
+        const resetMessage = document.getElementById("reset-message");
+
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        registrationForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const email = document.getElementById("email").value.toLowerCase();
+          const password = document.getElementById("password").value;
+
+          const existingUser = users.find((user) => user.email === email);
+          if (existingUser) {
+            message.classList.remove("hidden");
+          } else {
+            // If the email doesn't exist, register the user
+            const newUser = {
+              firstname: document.getElementById("firstname").value,
+              lastname: document.getElementById("lastname").value,
+              email: email,
+              password: password,
+            };
+            users.push(newUser);
+            localStorage.setItem("users", JSON.stringify(users));
+            alert("Registration successful!");
+            registrationForm.reset();
+            message.classList.add("hidden");
+          }
+        });
+
+        loginForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const loginEmail = document
+            .getElementById("login-email")
+            .value.toLowerCase();
+          const loginPassword = document.getElementById("login-password").value;
+
+          const authenticatedUser = users.find(
+            (user) =>
+              user.email === loginEmail && user.password === loginPassword
+          );
+
+          if (authenticatedUser) {
+            alert("Login successful!");
+            loginForm.reset();
+            loginMessage.classList.add("hidden");
+          } else {
+            loginMessage.classList.remove("hidden");
+          }
+        });
+
+        resetForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const resetEmail = document
+            .getElementById("reset-email")
+            .value.toLowerCase();
+          const newPassword = document.getElementById("new-password").value;
+
+          const existingUserIndex = users.findIndex(
+            (user) => user.email === resetEmail
+          );
+
+          if (existingUserIndex !== -1) {
+            users[existingUserIndex].password = newPassword;
+            localStorage.setItem("users", JSON.stringify(users));
+            alert("Password reset successful!");
+            resetForm.reset();
+            resetMessage.classList.add("hidden");
+          } else {
+            resetMessage.classList.remove("hidden");
+          }
+        });
+      });
+    </script>
+  
+
+</body></html>

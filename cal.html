@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .ve{
+        width: 400px;
+        height: 500px;
+        border: 8px double black;
+    }
+    #bb{
+        width: 350px;
+        height: 80px;
+        margin-top: 40px;
+        margin-left: 20px;
+        border: 1px solid black;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #u{
+        width: 300px;
+        height: 30px;
+        margin-left: 20px;
+        margin-top: 5px;
+        border: none;
+        outline: none;
+        /* border: 1px solid black; */
+    }
+      #result{
+        width: 300px;
+        height: 30px;
+        margin-left: 20px;
+        border: none;
+        outline: none;
+        /* background-color: aqua; */
+       }
+    .aa{
+        justify-content: space-evenly;
+        display: flex;
+        flex: wrap;
+    }
+    .dd button{
+        width: 70px;
+        height: 60px;
+        margin-top: 10px;
+    }
+</style>
+<body>
+    <div class="ve">
+        <div id="bb">
+        <div id="u"></div>
+        <div id="result"></div>
+
+    </div>
+    <div class="aa">
+        <div class="dd">
+            <button onclick="operators('%')">%</button>
+            <button onclick="displayResult.innerHTML = Math.sqrt(parseFloat(u.innerHTML));">√</button>
+            <button onclick="display('X')">⅓</button>
+            <button onclick="operators('⅛')">⅛</button>
+            <button onclick="''; u.innerHTML = '';">CE</button>
+        </div>
+        <div class="dd">
+            <button onclick="operators('+')">+</button>
+            <button onclick="display(9)">9</button>
+            <button onclick="display(8)">8</button>
+            <button onclick="display(7)">7</button>
+            <button onclick="u.innerHTML = u.innerHTML.slice(0, -1);">Del</button>
+        </div>
+        <div class="dd">
+            <button onclick="operators('-')">-</button>
+            <button onclick="display(6)">6</button>
+            <button onclick="display(5)">5</button>
+            <button onclick="display(4)">4</button>
+            <button onclick="display('™️')">™️</button>
+        </div>
+        <div class="dd">
+            <button onclick="operators('*')">*</button>
+            <button onclick="display(3)">3</button>
+            <button onclick="display(2)">2</button>
+            <button onclick="display(1)">1</button>
+            <button onclick="display('Ⅿ')">Ⅿ</button>
+        </div>
+        <div class="dd">
+            <button onclick="operators('÷')">÷</button>
+            <button onclick="display('.')">.</button>
+            <button onclick="display(0)">0</button>
+            <button onclick="display('M+')">M+</button>
+            <button onclick="calculate()">=</button>
+        </div>
+
+
+
+    </div>
+</body>
+<script>
+    let u = document.getElementById("u")
+let uu = document.getElementById("result")
+let operator = '';
+let result = '';
+const display = (a) => {
+    u.innerHTML += a
+}
+function operators(a) {
+    u.innerHTML += '' + a + '';
+    operator = a
+}
+function calculate() {
+    let expression = u.innerHTML.trim();
+    let operands = expression.split('' + operator + '');
+    let x = parseFloat(operands[0])
+    let y = parseFloat(operands[1])
+
+
+    switch (operator) {
+        case '+' :
+            result = x + y
+            break
+        case '-' :
+            result = x - y
+            break
+        case '÷' :
+            result = x / y
+            break        
+        case '*' :
+            result = x * y
+            break
+        case '%' :
+            result = x % y
+            break 
+        case '' :
+            result = Math.pow(x, 2);     
+    }
+
+    uu.innerHTML = result;
+}
+</script>
+</html>

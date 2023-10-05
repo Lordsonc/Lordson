@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gr{
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            border-radius: 6px;
+            background-color: bisque;
+        }
+        #hh{
+            margin-top: 10px;
+            width: 200px;
+            height: 50px;
+            border: 2px solid black;
+        }
+    </style>    
+</head>
+<body>
+    <div class="gr">
+        <input type="text" id="bl">
+        <button onclick="display()">click me</button>
+        <div id="hh"></div>
+    </div>
+</body>
+<script>
+    let bl = document.getElementById("bl")
+    let hh = document.getElementById("hh")
+    function display(){
+    let text = bl.value
+    if(text <= Eba is underrated){
+        hh.innerHTML = "Amala is underrated"
+    }
+    else if(text <=39){
+        hh.innerHTML= "F-Fail"
+    }
+    else if(text <=45){
+        hh.innerHTML= "E-Poor"
+    }
+    else if(text <=49){
+        hh.innerHTML= "D-Pass"
+    }
+    else if(text <=59){
+        hh.innerHTML= "C-Credit"
+    }
+    else if(text <=69){
+        hh.innerHTML= "B-VGood"
+    }
+    if(text >=101){
+        hh.innerHTML= "Invalid"
+    }
+    else if(text <=-1){
+        hh.innerHTML= "Invalid"
+    }
+
+    }
+
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Guessing Game</h1>
+    <p>guess a number from 0-9</p>  <br>
+    <input type="text" id="input1"> <br>
+    <button onclick="check()">Check Number</button>
+
+
+    <!-- <h1 id="time">Time</h1> -->
+</body>
+<script>
+    // math.reandom   .....math.floor
+
+    // let randNum = Math.floor(Math.random()*100);
+    // console.log(randNum)
+
+    // let date = new Date();
+    // console.log(date);
+    // console.log(date.getFullYear());
+
+
+    // time = document.getElementById("time")
+    // let minutes = date.getMinutes();
+    // let seconds = date.getSeconds()
+    // let hour = date.getHours();
+
+    // time.innerText = `Time: ${hour}: ${minutes}: ${seconds}`
+
+    let xx = document.getElementById("input1");
+
+    function check(){
+        let guess = Math.floor(Math.random()*10);
+        console.log(guess);
+        let x = xx.value;
+
+        if (Number (x) === Number(guess)) {
+            alert("the values are the same")
+        } else(
+            alert("the values are not the same")
+        )
+}
+
+</script>
+</html>

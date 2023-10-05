@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p1"></p>
+</body>
+<script>
+    /*
+    // Array in js
+    let test = [1,2,3,4,5,6,7,8,9,0];
+    console.log(test);
+
+    console.log(test.toString())
+    console.log(test.join(" | "));
+
+    const test2 = ["Rb Salzburg", "Chelsea", "Real Madrid", "Man City", "Barca", "Arsenal",];
+    test2.pop();
+    console.log(test2);
+
+    test2.push("Bayern");
+    console.log(test2);
+
+    test2.shift();
+    console.log(test2);
+
+    test2.unshift("Liverpool");
+    console.log(test2);
+
+    test2[3] = 'Man Utd';
+    console.log(test2);
+
+    const test3 = [1,2,3,4,5];
+    const test4 = [6,7,8,9,0];
+    const test5 = [11,12,13,14,15];
+
+    console.log(test3.concat(test4, test5))
+
+    const test6 = ["Bananas", "Apples", "Orange", "Kiwi", "Lemon", "Watermelon"];
+    test6.splice(3,1, "Mango", "Pine-apple");
+    console.log(test6);
+
+    test6.splice(5, 1);
+    console.log(test6)
+
+    const test7 = ["Green", "Black", "White", "Grey", "Purple", "Yellow", "Violet"]
+    const test8 = test7.slice(1,4);
+    console.log(test8);
+
+    const test9 = [test7[0], test7[4], test7[6]];
+    console.log(test9);
+
+    const test10= [2,4,6,8,0];
+    const test11 = [1,3,5,7,9];
+    const test12 = [...test11, ...test10];
+    console.log(test12);
+
+    const test13 = ["Red", "Blue", "Green", "black"];
+    let [color1, color2, color3, color4] = test13;
+    console.log(color3);
+
+    const person1 = {name: "Lawrence", age:1111, color:"Blue", food:"Rice"};
+    const {name, age, color, food} = person1;
+
+    //submit a write up on array iteration in JSxx
+    */
+
+    // loops in js
+    const arrNum = [1,2,3,4,5,6,7,8,9]
+    for(let i = 0; i < arrNum.length; i++){
+        let num = arrNum[i];
+        console.log(num * 6);
+    }
+
+    const details = {
+        name:"Test",
+        age:1111,
+        color:"Grey",
+        food:"Beans",
+        drink:"Fanta"
+    }
+
+    for(key in details){
+        let values = details[key];
+        console.log(values)
+    }
+
+    //while loop
+
+    let i = 0;
+    while(i < 10){
+        console.log(i);
+        i++;
+    }
+
+
+    // do wow loop
+    let j = 0;
+    do{
+        console.log(j);
+        j++;
+    }while(false)
+
+    // Array iteration method
+
+    let p1 = document.getElementById("p1")
+
+    let arrOne =[1,2,3,4,5,6,7,8,9];
+    arrOne.forEach((item, index)=>{
+        console.log(item * 7)
+        p1.innerHTML += `${item * 7} <br>`
+    })
+
+    const multiply2 = (item, index, array) => {
+        console.log(item * 9);
+
+        arrOne.forEach(multiply2);
+
+    }
+    let test1 = arrOne.map((item, index)=>{
+            return item * 11
+        })
+
+    console.log(test1)
+
+    let test2 = arrOne.filter((item, index)=>{
+        return item % 2 === 0;
+    })
+    console.log(test2);
+
+    let test3 = arrOne.find((item, index)=>{
+        return item % 2 === 0;
+    })
+    console.log(test3)
+
+    let test4 = arrOne.reduce((total, item, index) =>{
+        return total + item;
+    }, 0)
+    console.log(test4)
+
+    let arrTwo = [
+        {name:"Test1", age:1111},
+        {name:"Test2", age:1112},
+        {name:"Test3", age:1113},
+        {name:"Test4", age:1114},
+        {name:"Test5", age:1115},
+        {name:"Test6", age:1116},
+        {name:"Test7", age:1117},
+        {name:"Test8", age:1118},
+        {name:"Test9", age:1119},
+    ]
+    let test5 = arrTwo.reduce((total, item, index)=>{
+        return item.age + total;
+    }, 0)
+    console.log(test5);
+
+    // local storage : is a particular section on browswer to store data. only sting can be save in local storage
+    let name = "Ajibode Lawrence";
+    localStorage.setItem("name", name); //localstorage.setitem() is used to store data in the localstorage. it takes two parameters. the first parameter is the item
+
+    let strArrTwo = JSON.stringify(arrTwo);
+    localStorage.setItem("arr2", strArrTwo)
+
+    let test = localStorage.getItem("arr2");
+    console.log(JSON.parse(test));
+
+    localStorage.removeItem("name");
+
+    localStorage.clear();
+
+
+    
+</script>
+</html>

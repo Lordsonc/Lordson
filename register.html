@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <h1>Register</h1>
+        <button onclick="mode()">Light/Dark</button>
+        <input type="text" id="firstname" placeholder="First-Name"> <br> <br>
+        <input type="text" id="lastname" placeholder="Last-Name"> <br> <br>
+        <input type="email" id="email" placeholder="Email"> <br> <br>
+        <input type="phonenumber" id="phonenumber" placeholder="Phone-Number"> <br> <br>
+        <input type="password" id="password" placeholder="********"> <button onclick="showHide()">s</button><br> <br>
+        <input type="password" id="c_pass" placeholder="********"> <br> <br>
+        <button onclick="register(event)">Register</button> 
+    </form>
+</body>
+<script>
+    let firstname = document.getElementById("firstname");
+    let lastname = document.getElementById("lastname");
+    let email = document.getElementById("email");
+    let phonenumber = document.getElementById("phonenumber");
+    let password = document.getElementById("password");
+    let c_pass = document.getElementById("c_pass");
+    let regUser = localStorage.getItem
+
+    function register(ev){
+        console.log(ev.target);
+        ev.target.style.backgroundColor = "green"
+        ev.preventDefault()
+        let data = {
+            firstname: firstname.value,
+            lastname: lastname.value,
+            email: email.value,
+            phonenumber: phonenumber.value,
+            password: password.value,
+            c_pass: c_pass.value
+        }
+        if(firstname.value == "" || lastname.value == "" || email.value == "" || phonenumber == "" || password.value == "" || c_pass.value == ""){
+            alert("Input field cannot be empty")
+        }else if(password.value.length < 8){
+            alert("password cannot be less than 8 characters")
+        }else if(password.value != c_pass.value)
+                alert("password does not match")
+                else{
+                    alert("Registration Successful")
+                    localStorage.setItem("regUser", JSON.stringify(data))
+                    window.location.href = "login.html"
+                }
+        }
+
+        function showHide(){
+            if(password.type == "text"){
+                password.type = "password"
+            }else{
+                password.type = "type"
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+  // Check if there's a logged-in user
+  const loggedInUserEmail = localStorage.getItem("loggedInUser");
+
+  if (!loggedInUserEmail) {
+    // Redirect to the login page if the user is not logged in
+    window.location.href = "login.html";
+  } else {
+    // Display the dashboard content for the authenticated user
+    const user = JSON.parse(localStorage.getItem(loggedInUserEmail));
+    const emailElement = document.getElementById("email");
+    emailElement.textContent = `Hello, ${user.firstName} ${user.lastName}!`;
+
+    // Add a click event listener for the logout link
+    const logoutLink = document.getElementById("logoutLink");
+    logoutLink.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent default link behavior
+      // Clear the logged-in user and redirect to the login page
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "login.html";
+    });
+  }
+});
+        function doSomething(anything, dan){
+            // a variable you pass in a function when it is being decleared is a parameter
+            console.log(anything + dan)
+        }
+    
+
+</script>
+</html>

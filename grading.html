@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="displayNum(1)">1</button>
+    <button onclick="displayNum(2)">2</button>
+    <button onclick="displayNum(3)">3</button>
+    <button onclick="displayNum(4)">4</button>
+    <button onclick="displayNum(5)">5</button>
+    <button onclick="displayNum(6)">6</button>
+    <button onclick="displayNum(7)">7</button>
+    <button onclick="displayNum(8)">8</button>
+    <button onclick="displayNum(9)">9</button>
+    <button onclick="displayNum(0)">0</button>
+ 
+    <h1 id="anotherH1"></h1>
+</body>
+<script>
+    /*
+    let anotherH1 = document.getElementById(anotherH1)
+    function displayNum(a){
+        anotherH1.innerHTML += a
+    }
+
+    function add(){
+        let sum = 10 + 5;
+        let difference = 10 - 5;
+        let product = 10 * 5;
+        let divide = 10 / 5;
+        let modulo = 10 % 5;
+        return [sum, difference, product, divide, modulo]
+    }
+
+    let num1 = addNum();
+    console.log(num1);
+
+    let num2 = 55;
+    function checkNum(){
+        if(num2 % 2 === 0){
+            return '${num2} is even'
+        } else{
+            return '${num2} is odd'
+        }
+    }
+
+
+    let parent = document.body;
+    let h1 = document.createElement("h1");
+    let h1.innerHTML = checkNum();
+    parent.appendchild(h1);
+    */
+    //Paremeter
+
+    // string methods 
+    let test = "laptop"
+    console.log(test.length)
+
+    let name = "lawrence"
+    let name2 = name.slice(0, 3);
+    console.log(name2);
+
+    let name3 = "Adeyemi";
+    console.log(name3.substring(3, 7));
+
+    let name4 = "Emmanuel"
+    console.log(name4.substr(0, 4));
+    console.log(name4.substr(4, 4));
+
+    let name5 = "I support Arsenal";
+    console.log(name5.replace("Arsenal", "Chelsea"));
+
+    console.log(name5.toUpperCase());
+    console.log(name5.toLowerCase());
+
+    let test2 = "Chelsea Arsenal Liverpool Madrid Barca Inter Bayern";
+    console.log(test2.split(" "));
+
+    let name6 = " Timmy ";
+    console.log(name6);
+    console.log(name6.trim());
+
+    let name7 = "Adewole";
+    console.log(name7.charAt(3));
+
+    let name8 = "Akin";
+    let name9 = "Zima";
+    let name10 = "Enoch";
+
+    console.log(`${name8}, ${name9}, ${name10}`)
+
+
+
+</script>
+</html>

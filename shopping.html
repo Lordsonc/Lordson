@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping List</title>
+</head>
+<style>
+    #item,
+    #quatity,
+    #price{
+        width: 50rem;
+        gap: 1rem;
+        height: 30px;
+        border-radius: 2px solid black;
+        margin: 10px 0px;
+    }
+    .tr{
+        justify-content: space-between;
+    }
+</style>
+<body>
+    <h1>Shopping List</h1>
+    <input type="text" id="item" placeholder="shopping item"> <br>
+    <input type="text" id="quatity" placeholder="price"> <br>
+    <input type="text" id="price" placeholder="quality"> <br>
+
+    <button onclick="submit()">submit</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>s/n</th>
+                <th>items</th>
+                <th>quatity</th>
+                <th>price</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody id="display"></tbody>
+    </table>
+</body>
+
+    <script>
+        let list = [ ]
+        let quatity = document.getElementById("quatity")
+        let item = document.getElementById("item")
+        let price = document.getElementById("price")
+        function submit(){
+            let data = {
+                item: item.value,
+                quatity: quatity.value,
+                price: price.value,
+            }
+        list.push(data)
+        console.log(list);
+
+        display.innerHTML = " "
+        for (let index = 0; index < list.length; index++) {
+            const element = list[index];
+            display.innerHTML += 
+            `<tr>
+                <td>${index}</td>
+                <td>${element.item}</td>
+                <td>${element.quantity}</td>
+                <td>${element.price}</td>
+                    <td>
+                    <button>edit</button>
+                    <button>delete</button>
+                </td>
+            </tr>` 
+        }
+        }
+    </script>
+</html>

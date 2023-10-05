@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1 id="h1"></h1>
+    <h1 id="2ndh1"></h1>
+
+    <!-- <h1 id="head1"></h1>
+    <button onclick="displayNum(1)">1</button>
+    <button onclick="displayNum(2)">2</button>
+    <button onclick="displayNum(3)">3</button>
+    <button onclick="displayNum(4)">4</button>
+    <button onclick="displayNum(5)">5</button>
+    <button onclick="displayNum(6)">6</button>
+    <button onclick="displayNum(7)">7</button>
+    <button onclick="displayNum(8)">8</button>
+    <button onclick="displayNum(9)">9</button>
+    <button onclick="displayNum(0)">0</button>
+</body>
+<script>
+    // // dom manipulation
+    // let head1 = document.querySelector ("head1");
+    // head1.innerText = "welcome to javascript";
+
+
+
+    // let parentElement = document.body
+    // let newDiv = document.createElement ("div")
+
+
+
+    // let name = "Olaide";
+    // let greetings = "Welcome, " + name + ". We are happy to have you here";
+    // let h1 = document.getElementById("h1");
+    // h1.innerText = greetings;
+
+    // let age = "spongbob";
+    // let num = 4565;
+    // let age2 = Number(age);
+    // let age3 = parseInt(age);
+    // console.log(typeof age);
+    // console.log(typeof age2);
+    // console.log(typeof age3);
+
+
+    // let nameArr = ["Lawrence", "Olaide", "Gbolahan", "Shine", "Habeebat", "Zima", "Emmanuel", "Adekola", "Daniel", "Enoch", "Sam"];
+    // console.log(nameArr[5]);
+
+    // const obj1 = {
+    //     name: "lawence",
+    //     age: 20,
+    //     color: ["grey", "black", "blue"],
+    //     food: "beans",
+    //     height: 6.0,
+    //     weight: "86kg",
+    //     shoesize: 41,
+    // }
+    // console.log(obj1.color[1])
+
+    // // booleans
+
+    // let true1 = true
+
+    // // operators in javascript
+    // // assignment operator
+    // let test1 = 45;
+    // let test2 = 55;
+
+    // test1 = test2 + test2
+    // test1 += test2
+    // console.log(test1)
+
+    // test1 -=20;
+    // console.log(test1)
+
+    // // arithmetic operator
+    // let test3 = 75;
+    // let test4 = 25;
+    // console.log(test3+test4); // returns the sum of test3  and test4
+    // console.log(test3-test4); // returns the difference of test3 and test4
+    // console.log(test3/test4); // returns the quotient of test3 and test4
+    // console.log(test3*test4); // returns the product of test3 and test4
+    // console.log(test3%test4); // returns the remainder of test3 and test4
+    // console.log(test3**test4); // returns the exponent of test3 and test4
+    // test3++; // increments the value of test3  by 1
+    // console.log(test3);
+
+    //     //comparison operator
+    //     console.log(test3 == test4); //returns true if test3 is equal test4
+    //     console.log (45 == "45"); //returns true if test3 is equal to test4
+    //     console.log (45 === "45"); //returns true if test3 is equal to test4 and they are of the same data type
+    //     console.log (45 != "45"); //returns true if test3 is not equal test4
+    //     console.log (45 !== "45"); //returns true if test3 is not equal test4 or they are not of the same data type
+    //     console.log (45 > "45");  //returns true if test3 is greater than test4
+    //     console.log (45 >= "45"); //returns true if test3 is greater than or equal to test4
+    //     console.log (45 < "45"); //returns true if test3 is less than or equal test4
+    //     console.log (45 >= "45"); //returns true if test3 is less than or equal to test4
+
+    //     // logical operators
+    //     console.log (45 === "45" && 45 == "45"); //returns true if both conditions are true and fgalse iof one of the conditions is false
+    //     console.log (45 === "45" || 45 == "45"); //returns true if one of the conditions is true
+    //     console.log (!(45 === "45")); //returns true if one of the conditions is false and false if the condiction is true
+
+    //     // ternary operators
+
+    //     let test5 = 45;
+    //     let test6 = 55;
+
+    //     test5 === test6 ? console.log("they're equal") : console.log("they're not equal") //returns the second operand if the condition (ie the first operand) is true and the third operand if the condition (ie the first operand) is false
+
+        
+    //     // conditional Statement in js
+    //     // if-else statement
+
+    //     let test = 75;
+    //     if(test % 5 ===0) {console.log('${test} is divisible by 5');} 
+    //     else{console.log('${test} is not divisible by 5');}
+
+    //     if(test % 2 ===0) {console.log('${test} is an even number');
+    // } else if(test % 5 === 0) {console.log('${test} is not divisible by 5');}
+    //   else{console.log('${test} is neither divisble by 2 nor 5');}
+
+    // switch case statements in js
+    // let day = prompt ("enter your day of the week:")
+    // function checkDay(value) {
+    // switch (Number(value)) {
+    //     case 1:
+    //     alert("The day is Sunday")
+    //                 break;
+    //     case 2:
+    //     alert("The day is Monday")
+    //                 break;
+    //     case 3:
+    //     alert("The day is Tuesday")
+    //                 break;
+    //     case 4:
+    //     alert("The day is Wednesday")
+    //                 break;
+    //     case 5:
+    //     alert("The day is Thursday")
+    //                 break;
+    //     case 6:
+    //     alert("The day is Friday")
+    //                 break;
+    //     case 7:
+    //     alert("The day is Saturday")
+    //                 break;
+    //     default:
+    //     alert("invalid day")
+    //                 break;
+    //             }
+
+    //     }
+    //     checkDay(day)
+
+
+    //     let day2 = prompt ("enter your day of the week:")
+
+        <!-- let head1 = document.getElementById("head1")
+        function displayNum(num){
+            head1.innerHTML += num
+        } -->
+    <!-- // function 
+    // function multiplyNum1 (){
+
+    // }
+    // const multiplyNum2 = function(){
+
+    // }
+    // const multiplyNum3 = () => {
+
+    // } --> -->
+
+
+
+
+
+
+
+
+
+    
+
+
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    \<h1 id="head1"></h1>
+    <button onclick="displayNum(1)">1</button>
+    <button onclick="displayNum(2)">2</button>
+    <button onclick="displayNum(3)">3</button>
+    <button onclick="displayNum(4)">4</button>
+    <button onclick="displayNum(5)">5</button>
+    <button onclick="displayNum(6)">6</button>
+    <button onclick="displayNum(7)">7</button>
+    <button onclick="displayNum(8)">8</button>
+    <button onclick="displayNum(9)">9</button>
+    <button onclick="displayNum(0)">0</button>
+
+</body>
+<script>
+
+let head1 = document.getElementById("head1")
+        function displayNum(num){
+            head1.innerHTML += num
+        }
+
+let test1 = 20;
+let test2 = 60;
+
+test1 = test2 + test2;
+test1 += test2
+console.log(+ test1)
+
+</script>
+</html>

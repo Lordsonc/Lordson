@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #hed{
+        width: 15rem;
+        height: 2rem;
+    }
+    #bod{
+        width: 40rem;
+        height: 20rem;
+    }
+    .dark-mode{
+    background-color: black;
+    color: white
+}
+</style>
+<body>
+    <button onclick="mode()">dark-mode</button>
+    <button onclick="click(event)">Log Out</button>
+    <div>
+        <h1>Welcome to your Dashboard!!!!</h1>
+        <input type="text" id="hed" placeholder="Title"> <br> <br> <br> 
+        <input type="text" id="bod" placeholder="Text"> <br> <br>
+        <button>Submit</button>
+    </div>
+</body>
+<script>
+    let regUser = JSON.parse(localStorage.getItem("regUser"))
+    console.log(regUser);
+
+    email.innerHTML = regUser.email
+
+//     document.addEventListener("DOMContentLoaded", function () {
+//   // Check if there's a logged-in user
+//   const loggedInUserEmail = localStorage.getItem("loggedInUser");
+
+//   if (!loggedInUserEmail) {
+//     // Redirect to the login page if the user is not logged in
+//     window.location.href = "login.html";
+//   } else {
+//     // Display the dashboard content for the authenticated user
+//     const user = JSON.parse(localStorage.getItem(loggedInUserEmail));
+//     const emailElement = document.getElementById("email");
+//     emailElement.textContent = `Hello, ${user.firstName} ${user.lastName}!`;
+
+//     // Add a click event listener for the logout link
+//     const logoutLink = document.getElementById("logoutLink");
+//     logoutLink.addEventListener("click", function (event) {
+//       event.preventDefault(); // Prevent default link behavior
+//       // Clear the logged-in user and redirect to the login page
+//       localStorage.removeItem("loggedInUser");
+//       window.location.href = "login.html";
+//     });
+//   }
+// }); 
+function mode(){
+        let element = document.body
+        element.classList.toggle("dark-mode")
+    }
+</script>
+</html>

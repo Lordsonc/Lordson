@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let name = "Lawrence"
+    localStorage.setItem("hey", name);
+    let me = localStorage.getItem("hey");
+    console.log(me)
+
+    let Arr1 = ["james", "land", "book"];
+    let stringArr1 = JSON.stringify(Arr1);
+    console.log(stringArr1)
+    let parseInt = JSON.parse(stringArr1);
+    console.log(parseInt)
+
+</script>
+</html>
