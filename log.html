@@ -4,40 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="function.js">
 </head>
 <body>
-    <div class="container">
+    <form>
         <h1>Login</h1>
-        <form id="login-form">
-          <label for="login-email">Email:</label>
-          <input type="email" id="login-email" required=""><br><br>
-  
-          <label for="login-password">Password:</label>
-          <input type="password" id="login-password" required=""><br><br>
-  
-          <button type="submit" onclick="addEventListenerz">Login</button>
-        </form>
-        <p id="login-message" class="hidden">
-          Invalid email or password. Please try again.
-        </p>
-      </div>
-      
-
-      <div class="container">
-        <h1>Password Reset</h1>
-        <form id="reset-form">
-          <label for="reset-email">Email:</label>
-          <input type="email" id="reset-email" required=""><br><br>
-  
-          <label for="new-password">New Password:</label>
-          <input type="password" id="new-password" required=""><br><br>
-  
-          <button type="submit">Reset Password</button>
-        </form>
-        <p id="reset-message" class="hidden">Password reset successful!</p>
-      </div>
-
+        <input id="email" type="email" placeholder="Email"><br><br>
+        <input id="password" type="password" placeholder="****"><br><br>
+        <button onclick="login(event)">Login</button>
+    </form>
 </body>
-</script>
 </html>
+<script>
+    let regUser = JSON.parse(localStorage.getItem("regUser"))
+    console.log(regUser);
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+
+    function login(ev){
+        ev.preventDefault();
+        if(email.value != regUser.email || password.value != regUser.password){
+        let found = regUser.find((el)=> el.email == email.value && el.password == password.value)
+        console.log(found);
+        if(found == undefined){
+            alert("User not found")
+        }else{
+            alert("Login successful")
+            localStorage.setItem("currUser", JSON.stringify(found))
+            window.location.href = "dash.html"
+        }
+    }
+</script>

@@ -20,6 +20,8 @@
 }
 </style>
 <body>
+    <input onchange="pickFile(event)" type="file">
+    <img width="200px" height="200px" id="img" alt="">
     <button onclick="mode()">dark-mode</button>
     <button onclick="click(event)">Log Out</button>
     <div>
@@ -35,29 +37,16 @@
 
     email.innerHTML = regUser.email
 
-//     document.addEventListener("DOMContentLoaded", function () {
-//   // Check if there's a logged-in user
-//   const loggedInUserEmail = localStorage.getItem("loggedInUser");
-
-//   if (!loggedInUserEmail) {
-//     // Redirect to the login page if the user is not logged in
-//     window.location.href = "login.html";
-//   } else {
-//     // Display the dashboard content for the authenticated user
-//     const user = JSON.parse(localStorage.getItem(loggedInUserEmail));
-//     const emailElement = document.getElementById("email");
-//     emailElement.textContent = `Hello, ${user.firstName} ${user.lastName}!`;
-
-//     // Add a click event listener for the logout link
-//     const logoutLink = document.getElementById("logoutLink");
-//     logoutLink.addEventListener("click", function (event) {
-//       event.preventDefault(); // Prevent default link behavior
-//       // Clear the logged-in user and redirect to the login page
-//       localStorage.removeItem("loggedInUser");
-//       window.location.href = "login.html";
-//     });
-//   }
-// }); 
+function pickFile(ev){
+    console.log(ev.target.files);
+    let file = ev.target.filed[0];
+    let reader = new FileReader()
+    reader.addEventListener("load", (e)=>{
+        let result = e.target.result
+        img.src = result
+        console.log(result);
+    })
+}
 function mode(){
         let element = document.body
         element.classList.toggle("dark-mode")
