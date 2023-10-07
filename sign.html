@@ -6,29 +6,35 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <main>
+    <main>
         <input type="text" id="input1"><br><br>
         <input type="text" id="input2"><br><br>
-        <button>Compare</button> -->
-    <!-- </main>
+        <button>Compare</button>
+    </main>
+
     <main>
         <h1>Guessing Game</h1>
         <p>Guess a number from 0-9</p>
         <input type="text"><br><br>
         <button>Check Number</button>
     </main>
+
     <h1>Time: 10: 20: 33</h1>
-    <button onclick="doSomething(40, 15)">Trigger</button> -->
+    <button onclick="doSomething(40, 15)">Trigger</button>
+
+
+
     <form>
-        <h1>Rgister</h1>
+        <h1>Register</h1>
         <input id="username" type="text" placeholder="username"><br><br>
         <input id="email" type="email" placeholder="Email"><br><br>
-        <input id="password" type="password" placeholder="****"> <button type="button" onclick="showHide()">s</button><br><br>
-        <input id="c_pass" type="password" placeholder="****"><br><br>
+        <input id="password" type="password" placeholder="**"> <button type="button" onclick="showHide()">s</button><br><br>
+        <input id="c_pass" type="password" placeholder="**"><br><br>
         <button onclick="register(event)">Register</button>
     </form>
 </body>
 </html>
+
 <script>
     let username = document.getElementById("username")
     let email = document.getElementById("email")
@@ -48,7 +54,7 @@
             password: password.value,
             c_pass: c_pass.value
         }
-
+        
         if(username.value == "" || email.value == "" || password.value == ""){
             alert("Input fields cannot be empty")
         }else if(password.value.length < 8){
@@ -62,6 +68,7 @@
             window.location.href = "log.html"
         }
     }
+
     function showHide(){
         if(password.type == "text"){
             password.type = "password"
@@ -69,24 +76,28 @@
             password.type = "text"
         }
     }
-    // function doSomething(anything, dan){
-    //     //A variable you pass in a function when it is being declared is a parameter
-    //     console.log(anything + dan);
-    //     console.log(anything - dan);
-    // }
+
+    function doSomething(anything, dan){
+        //A variable you pass in a function when it is being declared is a parameter
+        console.log(anything + dan);
+        console.log(anything - dan);
+    }
     //Math.random... Math.floor
     // Date...
     // Show and hide password (Assignment 2)
     // Password must not be less than 8 characters (Validation 2)
     // No input fields must be empty (Validation 3)
     // Password match(Assignment 3)
+
     //LocalStorage...
-    // let randNum = Math.floor(Math.random()*10);// Assignment 1
-    // console.log(randNum);
-    // let date = new Date();
-    // console.log(date);
-    // console.log(date.getFullYear());
-    // console.log(date.getHours());
-    // console.log(date.getMinutes());
-    // console.log(date.getSeconds());
+
+    let randNum = Math.floor(Math.random()*10);// Assignment 1
+    console.log(randNum);
+
+    let date = new Date();
+    console.log(date);
+    console.log(date.getFullYear());
+    console.log(date.getHours());
+    console.log(date.getMinutes());
+    console.log(date.getSeconds());
 </script>

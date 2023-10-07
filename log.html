@@ -9,11 +9,12 @@
     <form>
         <h1>Login</h1>
         <input id="email" type="email" placeholder="Email"><br><br>
-        <input id="password" type="password" placeholder="****"><br><br>
+        <input id="password" type="password" placeholder="**"><br><br>
         <button onclick="login(event)">Login</button>
     </form>
 </body>
 </html>
+
 <script>
     let regUser = JSON.parse(localStorage.getItem("regUser"))
     console.log(regUser);
@@ -22,7 +23,6 @@
 
     function login(ev){
         ev.preventDefault();
-        if(email.value != regUser.email || password.value != regUser.password){
         let found = regUser.find((el)=> el.email == email.value && el.password == password.value)
         console.log(found);
         if(found == undefined){
@@ -33,5 +33,4 @@
             window.location.href = "dash.html"
         }
     }
-  }
 </script>
