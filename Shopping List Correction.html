@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)file:///Users/macbook/Downloads/shopping%20list%20correction%20(1).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List Correction</title>
+    <style>
+        body{
+            background-color: rgb(242, 242, 242);
+            font-family: sans-serif;
+        }
+        section{
+            background-color: white;
+            width: 60%;
+            padding: 20px 10px 30px 10px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px gray;
+            margin: auto;
+        }
+        h2{
+            text-align: center;
+        }
+        input{
+            display: block;
+            width: 98%;
+            margin: auto;
+            margin-bottom: 20px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1.5px solid gainsboro;
+            padding-left: 10px;
+            transition: all 0.2s linear;
+            outline: none;
+        }
+        input:focus-within{
+            box-shadow: 0px 0px 20px rgb(180, 236, 255);
+        }
+         button{
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+         }
+         .div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+         } 
+         #p1{
+            margin-right: 50px;
+         }
+         #div1{
+            margin-top: 10px;
+         }
+         .stuff{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 80%;
+            margin: auto;
+            background-color: white;
+            padding: 10px 0px;
+            border-radius: 10px;
+            border: 1px solid gainsboro;
+            margin-top: 10px;
+         }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>Shopping List</h2>
+        <input type="text" id="name" placeholder="Item name">
+        <input type="number" id="price" placeholder="Item Price">
+        <input type="number" id="quantity" placeholder="Item quantity">
+        <div class="div">
+            <button id="btn" onclick="submit()">Submit</button>
+            <p id="p1">Total: 0</p>
+        </div>
+    </section>
+    <div id="div1">
+        
+    </div>
+
+<script>
+    let shoppingArr = [];
+    let inputOne = document.getElementById("name");
+    let inputTwo = document.getElementById("price");
+    let inputThree = document.getElementById("quantity");
+    let div2 = document.getElementById("div1")
+
+    if (localStorage.getItem("shoppingArray") === null) {
+        localStorage.setItem("shoppingArray", "[]")
+    }
+
+   const display = () => {
+    let displayArr1 = localStorage.getItem("shoppingArray");
+    let displayArr2 = JSON.parse(displayArr1);
+
+    for (let i = 0; i < displayArr2.length; i++) {
+        div2.innerHTML += `
+        <div class="stuff">
+            <p>Item: ${displayArr2[i].item}</p>
+            <p>Quantity: ${displayArr2[i].quantity}</p>
+            <p>Price: ${displayArr2[i].price}</p>
+            <p>Subtotal: ${displayArr2[i].price * displayArr2[i].quantity}</p>
+            <button onclick="editBtn(${i})">Edit</button>
+            <button onclick="deleteBtn(${i})">Delete</button>
+        </div>
+        `
+    }
+
+    let total = document.getElementById("p1");
+    total.innerHTML = "Total: " + displayArr2.reduce((total, item)=>{
+        return total + (item.price * item.quantity);    
+    },0)
+   }
+
+   display();
+
+    const submit = () => {
+        let item = inputOne.value;
+        let quantity = Number(inputTwo.value);
+        let price = Number(inputThree.value);
+
+        let shoppingObj = {
+            item,
+            quantity,
+            price
+        }
+       let storedArray = localStorage.getItem("shoppingArray");
+       let parsedArr = JSON.parse(storedArray);
+       shoppingArr = [...parsedArr, shoppingObj];
+       localStorage.setItem("shoppingArray", JSON.stringify(shoppingArr));
+       window.location.href = "shopping list correction.html"
+    }
+
+    const editBtn = (i) => {
+        let storedArray = localStorage.getItem("shoppingArray");
+        let parsedArr = JSON.parse(storedArray);
+        let item = prompt("Enter new item", parsedArr[i].item);
+        let quantity = prompt("Enter new quantity", parsedArr[i].quantity);
+        let price = prompt("Enter new price", parsedArr[i].price);
+
+        let newObj = {
+            item,
+            quantity,
+            price
+        }
+
+        // parsedArr[i] = newObj;
+        //OR
+        parsedArr.splice(i, 1, newObj);
+        localStorage.setItem("shoppingArray", JSON.stringify(parsedArr));
+        window.location.href = "shopping list correction.html"
+    }
+
+    const deleteBtn = (i) => {
+        let storedArray = localStorage.getItem("shoppingArray");
+        let parsedArray = JSON.parse(storedArray);
+        parsedArray.splice(i, 1);
+        localStorage.setItem("shoppingArray", JSON.stringify(parsedArray));
+        window.location.href = "shopping list correction.html";
+    }
+</script>
+</body></html>
