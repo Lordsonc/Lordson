@@ -1,0 +1,155 @@
+// Implement a logout button
+// Create more than one user
+// Authorize a user for dashboard
+// 
+let names = ["Daniel", "Samuel", "Victor", "David"]
+console.log(names)
+let one = document.getElementById("title");
+let two = document.getElementById("content");
+
+let currUser= JSON.parse(localStorage.getItem("currUser"))
+console.log(currUser);
+if(currUser == null){
+    alert("You're not logged in")
+    window.location.href = "login.html"
+}
+
+
+
+username.innerHTML = currUser.username
+
+function logout(){
+    localStorage.removeItem("currUser");
+    window.location.href = "login.html"
+}
+let colors = ['green', 'red', 'pink', 'black', 'orange', 'tomato'] // Class Work
+function pickFile(ev){
+    console.log(ev.target.files);
+    let file = ev.target.files[0];
+    let reader = new FileReader()
+    reader.addEventListener("load", (e)=>{
+        let result = e.target.result
+        img.src = result
+        console.log(result);
+    })
+
+    if(file){
+        reader.readAsDataURL(file)
+    }
+}
+function mode(){
+    let element = document.body
+    element.classList.toggle("dark-mode")
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+      const blogTitleInput = document.getElementById("blog-title");
+      const blogContentInput = document.getElementById("blog-content");
+      const blogImageInput = document.getElementById("blog-image");
+      const postButton = document.getElementById("post-button");
+      const blogPostsContainer = document.getElementById("blog-posts");
+
+      postButton.addEventListener("click", function () {
+        const title = blogTitleInput.value;
+        const content = blogContentInput.value;
+        const image = blogImageInput.files[0];
+
+        if (title && content && image) {
+          const postTime = new Date().toLocaleString();
+
+          const postDiv = document.createElement("div");
+          postDiv.classList.add("blog-post");
+
+          const postImage = document.createElement("img");
+          postImage.style.width = "300px";
+          postImage.style.height = "300px";
+          postImage.src = URL.createObjectURL(image);
+
+          const postTitle = document.createElement("h2");
+          postTitle.textContent = title;
+
+          const postContent = document.createElement("p");
+          postContent.textContent = content;
+
+          const postTimeElement = document.createElement("small");
+          postTimeElement.textContent = `Posted on ${postTime}`;
+
+          const likeButton = document.createElement("button");
+          likeButton.textContent = "Like";
+          likeButton.style.backgroundColor = "teal";
+          likeButton.style.color = "white";
+          likeButton.style.border = "none";
+          likeButton.style.padding = "10px 20px";
+          likeButton.style.marginLeft = "10px";
+          likeButton.style.borderRadius = "5px";
+
+          const replyButton = document.createElement("button");
+          replyButton.textContent = "Reply";
+          replyButton.style.backgroundColor = "orange";
+          replyButton.style.color = "white";
+          replyButton.style.border = "none";
+          replyButton.style.padding = "10px 20px";
+          replyButton.style.marginLeft = "10px";
+          replyButton.style.borderRadius = "5px";
+          postDiv.appendChild(postImage);
+          postDiv.appendChild(postTitle);
+          postDiv.appendChild(postContent);
+          postDiv.appendChild(postTimeElement);
+          postDiv.appendChild(likeButton);
+          postDiv.appendChild(replyButton);
+
+          blogPostsContainer.appendChild(postDiv);
+
+          // Clear input fields
+          blogTitleInput.value = "";
+          blogContentInput.value = "";
+          blogImageInput.value = "";
+        }
+      });
+    }); 
+    let date = new Date();
+    function addPost() {
+        console.log(imgURL);
+        let data = {
+            author: currUser.username,
+            title: title.value,
+            text: text.value,
+            img: imgURL,
+            timePosted: `${date.getHours()} : ${date.getMinutes()} ${date.getHours() < 12 ? "am" : "pm"}`,
+            isLiked: false
+        }
+        localStorage.setItem("post", JSON.stringify(data));
+        alert("Post successful");
+        anArray.push(title.value)
+        displayPost();
+    }
+
+    function displayPost() {
+        anArray.forEach(el, i => {
+
+        });
+    }
+    displayPost();
+
+let colorarray = ["blue", "green", "yellow", "red", "orange"];
+localStorage.setItem(colorarray, (JSON.stringify(colorarray)));
+let colora = document.getElementById("colora");
+let i=0;
+for (let i = 0; i < colorarray.length; i++) {
+    let index = colorarray[i];
+     colora.style.backgroundColor=colorarray[i];
+     colora.value=colorarray[i]; 
+}
+function previewcolor() {
+    i=(i - 1 + colorarray.length) % colorarray.length;
+    colora.value=colorarray[i]; 
+    colora.style.backgroundColor=colorarray[i];
+
+    }
+function nextcolor() {
+    i=(i + 1)%colorarray.length;
+    colora.value=colorarray[i]; 
+    colora.style.backgroundColor=colorarray[i];
+
+
+}

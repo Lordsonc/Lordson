@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)file:///Users/macbook/Downloads/law.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+
+      .quiz-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      #question-container {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .options {
+        margin-top: 10px;
+      }
+
+      label {
+        margin-right: 10px;
+      }
+
+      #button-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        border: none;
+        background-color: teal;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+      }
+
+      .alert {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px;
+        margin-top: 20px;
+        text-align: center;
+        display: none;
+      }
+
+      .options {
+        margin-top: 10px;
+      }
+
+      label {
+        margin-right: 10px;
+        display: none;
+      }
+    </style>
+    <title>Exam Quiz</title>
+  </head>
+  <body>
+    <div class="quiz-container">
+      <h1>Exam Quiz</h1>
+      <div id="question-container">
+        <p id="question">Question 3: Which planet are we</p>
+        <div class="options">
+          <input type="checkbox" id="option1" name="answer" value="Mars">Mars<label for="option1">4</label><br>
+          <input type="checkbox" id="option2" name="answer" value="Earth">Earth<label for="option2">3</label><br>
+          <input type="checkbox" id="option3" name="answer" value="Jupiter">Jupiter<label for="option3">5</label><br>
+          <input type="checkbox" id="option4" name="answer" value="Saturn">Saturn<label for="option4">6</label><br>
+        </div>
+      </div>
+      <div id="button-container">
+        <button id="prev-button">Previous</button>
+        <button id="next-button">Next</button>
+        <button id="submit-button">Submit</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const questionContainer = document.getElementById("question-container");
+        const question = document.getElementById("question");
+        const options = document.querySelectorAll(
+          ".options input[type=checkbox]"
+        );
+        const prevButton = document.getElementById("prev-button");
+        const nextButton = document.getElementById("next-button");
+        const submitButton = document.getElementById("submit-button");
+
+        let currentQuestion = 0;
+        const questions = [
+          {
+            question: "What is 1 + 2?",
+            options: ["4", "3", "5", "6"],
+            correctAnswer: ["3"],
+          },
+          {
+            question: "What is the capital of France?",
+            options: ["Paris", "London", "Berlin", "Madrid"],
+            correctAnswer: ["Paris"],
+          },
+          {
+            question: "Which planet are we",
+            options: ["Mars", "Earth", "Jupiter", "Saturn"],
+            correctAnswer: ["Earth"],
+          },
+          {
+            question: "Which planet are we",
+            options: ["Mars", "Earth", "Jupiter", "Saturn"],
+            correctAnswer: ["Earth"],
+          },
+          {
+            question: "Which planet are we",
+            options: ["Mars", "Earth", "Jupiter", "Saturn"],
+            correctAnswer: ["Earth"],
+          },
+          {
+            question: "Which planet are we",
+            options: ["Mars", "Earth", "Jupiter", "Saturn"],
+            correctAnswer: ["Earth"],
+          },
+        ];
+
+        function showQuestion(questionIndex) {
+          const currentQuestionData = questions[questionIndex];
+          question.textContent = `Question ${questionIndex + 1}: ${
+            currentQuestionData.question
+          }`;
+          for (let i = 0; i < options.length; i++) {
+            options[i].value = currentQuestionData.options[i];
+            options[i].nextSibling.textContent = currentQuestionData.options[i];
+            options[i].checked = false;
+          }
+        }
+
+        showQuestion(currentQuestion);
+
+        nextButton.addEventListener("click", function () {
+          if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            showQuestion(currentQuestion);
+            prevButton.disabled = false;
+          }
+
+          if (currentQuestion === questions.length - 1) {
+            nextButton.disabled = true;
+          }
+        });
+
+        prevButton.addEventListener("click", function () {
+          if (currentQuestion > 0) {
+            currentQuestion--;
+            showQuestion(currentQuestion);
+            nextButton.disabled = false;
+          }
+
+          if (currentQuestion === 0) {
+            prevButton.disabled = true;
+          }
+        });
+
+        submitButton.addEventListener("click", function () {
+          const selectedOptions = Array.from(options)
+            .filter((option) => option.checked)
+            .map((option) => option.value);
+
+          const currentQuestionData = questions[currentQuestion];
+          const correctAnswer = currentQuestionData.correctAnswer;
+          let score = 0;
+
+          for (const selectedOption of selectedOptions) {
+            if (correctAnswer.includes(selectedOption)) {
+              score++;
+            }
+          }
+
+          alert(`Your score: ${score}/${correctAnswer.length}`);
+        });
+      });
+    </script>
+  
+
+</body></html>
