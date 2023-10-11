@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)file:///Users/macbook/Downloads/new.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adkcdr</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .alarm-container {
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .input-container {
+        margin-bottom: 20px;
+      }
+
+      label {
+        margin-right: 10px;
+      }
+
+      input {
+        width: 50px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        background-color: teal;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #00796b;
+      }
+
+      .alarm-info {
+        display: none;
+        margin-top: 20px;
+      }
+
+      .alarm-info p {
+        margin: 10px 0;
+      }
+
+      .alarm-info span {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="alarm-container">
+      <h1>Alarm Time Setter</h1>
+      <div class="input-container">
+        <label for="hour">Hour:</label>
+        <input type="number" id="hour" min="0" max="23">
+        <label for="minute">Minute:</label>
+        <input type="number" id="minute" min="0" max="59">
+        <button id="set-alarm-button">Set Alarm</button>
+      </div>
+      <div class="alarm-info" id="alarm-info">
+        <p>Date: <span id="alarm-date"></span></p>
+        <p>Month: <span id="alarm-month"></span></p>
+        <p>Year: <span id="alarm-year"></span></p>
+        <p>Hour: <span id="alarm-hour"></span></p>
+        <p>Minute: <span id="alarm-minute"></span></p>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hourInput = document.getElementById("hour");
+        const minuteInput = document.getElementById("minute");
+        const setAlarmButton = document.getElementById("set-alarm-button");
+        const alarmInfo = document.getElementById("alarm-info");
+        const alarmDate = document.getElementById("alarm-date");
+        const alarmMonth = document.getElementById("alarm-month");
+        const alarmYear = document.getElementById("alarm-year");
+        const alarmHour = document.getElementById("alarm-hour");
+        const alarmMinute = document.getElementById("alarm-minute");
+
+        setAlarmButton.addEventListener("click", function () {
+          const currentDateTime = new Date();
+          const selectedHour = parseInt(hourInput.value) || 0;
+          const selectedMinute = parseInt(minuteInput.value) || 0;
+
+          const alarmDateTime = new Date(
+            currentDateTime.getFullYear(),
+            currentDateTime.getMonth(),
+            currentDateTime.getDate(),
+            selectedHour,
+            selectedMinute
+          );
+
+          // Display the selected date, month, year, hour, and minute
+          alarmDate.textContent = alarmDateTime.getDate();
+          alarmMonth.textContent = alarmDateTime.toLocaleString("default", {
+            month: "long",
+          });
+          alarmYear.textContent = alarmDateTime.getFullYear();
+          alarmHour.textContent = alarmDateTime.getHours();
+          alarmMinute.textContent = alarmDateTime.getMinutes();
+
+          // Show the alarm info
+          alarmInfo.style.display = "block";
+
+          // Function to check the time and trigger an alert when the alarm time arrives
+          const checkAlarm = () => {
+            const currentDateTime = new Date();
+            if (
+              currentDateTime.getFullYear() === alarmDateTime.getFullYear() &&
+              currentDateTime.getMonth() === alarmDateTime.getMonth() &&
+              currentDateTime.getDate() === alarmDateTime.getDate() &&
+              currentDateTime.getHours() === alarmDateTime.getHours() &&
+              currentDateTime.getMinutes() === alarmDateTime.getMinutes()
+            ) {
+              alert("Alarm time reached!");
+            }
+          };
+
+          // Check the alarm time every second
+          const intervalId = setInterval(checkAlarm, 1000);
+
+          // Clear the interval when the page unloads (e.g., on navigating away)
+          window.addEventListener("beforeunload", () => {
+            clearInterval(intervalId);
+          });
+        });
+      });
+    </script>
+  
+
+</body></html>

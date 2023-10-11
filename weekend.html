@@ -7,9 +7,47 @@
 </head>
 <body>
     <button>light/Dark</button>
+
+    <button onclick="minus()">-</button>
+    <span id="num">0</span>
+    <button onclick="plus()">+</button>
 </body>
 <script>
-    
+    let fig = 0;
+    num.innerHTML = fig;
+    let clearMinus = setInterval(()=>{
+        fig --;
+        num.innerHTML = fig
+}, 1000)
+let clearPlus = setInterval(()=>{
+        fig ++;
+        num.innerHTML = fig
+}, 1000)
+    function minus(){
+        let dis = setInterval(()=>{
+            if(fig == -10){
+            clearInterval(dis)
+            return
+        }else{
+            fig --;
+            num.innerHTML = fig;
+        }
+    },1000)
+    }
+    function plus(){
+        let dis = setInterval(()=>{
+            if(fig == 10){
+            clearInterval(dis)
+            return
+        }else{
+            fig ++;
+            num.innerHTML = fig;
+        }    
+    },1000)
+    }
+
+
+
     // const firstName = 'lawrence'
     // const lastName = 'Ajibode'
     // console.log(firstName + ' ' + lastName);
@@ -26,35 +64,35 @@
     // console.log(average)
     
 
-    const numbers = [2,3,4,5,6,7,8,9];
-    let val;
+    // const numbers = [2,3,4,5,6,7,8,9];
+    // let val;
     
-    val = numbers[3]
-    val = numbers.sort(function(x, y){
-        return y - x;
-    });
+    // val = numbers[3]
+    // val = numbers.sort(function(x, y){
+    //     return y - x;
+    // });
 
     
-    // console.log(numbers)
-    // console.log(val)
+    // // console.log(numbers)
+    // // console.log(val)
 
-    const test10= [2,4,6,8,0];
-    const test11 = [1,3,5,7,9];
-    const test12 = [...test11, ...test10];
-    let value = test12.sort(function(x, y){
-        return x - y
-    })
+    // const test10= [2,4,6,8,0];
+    // const test11 = [1,3,5,7,9];
+    // const test12 = [...test11, ...test10];
+    // let value = test12.sort(function(x, y){
+    //     return x - y
+    // })
 
-    function under50(num){
-        return num < 50;
-    }
-    val = test12.find(under50);
+    // function under50(num){
+    //     return num < 50;
+    // }
+    // val = test12.find(under50);
 
-    // console.log(test12);
+    // // console.log(test12);
 
-    const person1 = {name: "Lawrence", age:1111, color:"Blue", food:"Rice"};
-    const {name, age, color, food} = person1;
-    console.log(name, age, color, food)
+    // const person1 = {name: "Lawrence", age:1111, color:"Blue", food:"Rice"};
+    // const {name, age, color, food} = person1;
+    // console.log(name, age, color, food)
 
 
     
