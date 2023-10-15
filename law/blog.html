@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Reset some default styles */
+      body,
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+      .wale {
+        width: 200px;
+      }
+
+      input,
+      textarea {
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .blog-post {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+
+      .blog-post h2 {
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .blog-post img {
+        max-width: 100%;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .blog-post p {
+        color: #555;
+      }
+
+      .like-button,
+      .comment-button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: #007bff;
+        margin-right: 10px;
+      }
+
+      .comment-button {
+        color: #555;
+      }
+
+      /* Add more styling for comment and reply sections if needed */
+    </style>
+  </head>
+  <body>
+    <form id="blog-form">
+      <input type="text" id="blog-title" placeholder="Title" />
+      <input type="file" id="blog-image" accept="image/*" />
+      <textarea id="blog-content" placeholder="Write your blog..."></textarea>
+      <button type="submit">Publish</button>
+    </form>
+
+    <div id="blog-list"></div>
+  </body>
+  <script>
+    document
+      .getElementById("blog-form")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Get user input
+        const title = document.getElementById("blog-title").value;
+        const image = document.getElementById("blog-image").files[0];
+        const content = document.getElementById("blog-content").value;
+
+        // Create a new blog post element
+        const blogPost = document.createElement("div");
+        blogPost.innerHTML = `
+        <h2>${title}</h2>
+        <img class="wale" src="${URL.createObjectURL(image)}" alt="${title}">
+        <p>${content}</p>
+        <button class="like-button">Like</button>
+        <button class="comment-button">Comment</button>
+    `;
+
+        // Add like button functionality
+        const likeButton = blogPost.querySelector(".like-button");
+        let isLiked = false;
+        likeButton.addEventListener("click", function () {
+          if (isLiked) {
+            likeButton.classList.remove("liked");
+            isLiked = false;
+          } else {
+            likeButton.classList.add("liked");
+            isLiked = true;
+          }
+        });
+
+        const commentButton = blogPost.querySelector(".comment-button");
+        commentButton.addEventListener("click", function () {
+          const commentForm = document.createElement("div");
+          commentForm.innerHTML = `
+                <form class="comment-form">
+                    <textarea class="comment-input" placeholder="Add a comment"></textarea>
+                    <button class="comment-submit">Submit</button>
+                </form>
+            `;
+          commentButton.insertAdjacentElement("afterend", commentForm);
+
+          const commentSubmitButton =
+            commentForm.querySelector(".comment-submit");
+          commentSubmitButton.addEventListener("click", function () {
+            const commentText =
+              commentForm.querySelector(".comment-input").value;
+            // Add the comment to the post or send it to your server (backend) for storage.
+            // You can append the comment to the blog post element.
+          });
+        });
+
+        // Add the blog post to the page
+        document.getElementById("blog-list").appendChild(blogPost);
+      });
+  </script>
+</html>

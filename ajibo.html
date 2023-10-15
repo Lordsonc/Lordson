@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous">
+        <title>Document</title>
+        <style>
+        .left{
+            border-right: 2px solid grey;
+        }
+    </style>
+    </head>
+    <body>
+        <button>Light/Dark</button>
+        <button onclick="logout()">Logout</button>
+        <select name="" id="">
+            <option value="">NP</option>
+            <option value="">iuyt</option>
+            <option value="">iuyt</option>
+            <option value="">iuyt</option>
+        </select>
+        <select name="" id="">
+            <option value="">AMOunt</option>
+            <option value="">iuyt</option>
+            <option value="">iuyt</option>
+            <option value="">iuyt</option>
+        </select>
+        <button>GenAit</button>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col left">
+                    <main>
+                        <h1>Welcome to your Dashboard <span id="username"></span></h1>
+                        <input type="text" id="title" placeholder="Title"><br><br>
+                        <input onchange="pickFile(event)" type="file" id
+                            placeholder="Title"><br><br>
+                        <img width="200" height="200" id="img" alt><br><br>
+                        <textarea name id="content" cols="30" rows="10"
+                            placeholder="Content"></textarea><br><br>
+                        <button onclick="addPost()">Add Post</button>
+                    </main>
+                </div>
+                <div class="col">
+                    <h1>All Post</h1>
+                    <div id="disPost"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    let obj = {
+        name: "Dan",
+        age: 2
+    }
+    disPost.innerHTML = obj.name
+    // Complete your cbt... (Select answers and calculate the total score of the player, set a timer to 60sec for the whole CBT)
+    // Display liked blog
+    // Lock screen phone
+    // forEach find filter map reduce 
+
+
+    let arr = []
+    let arrObj = [{name: "Vic"}, {name: "Sam"}]
+    let arrStr = ["Who", "When", "How"]
+
+    let arrFind = [
+        {name: "Dan", no: 1},
+        {name: "Sam", no: 2},
+        {name: "Dan", no: 2},
+    ]
+    let finding = arrFind.find((el)=> el.name == "Dan")
+    console.log(finding)
+
+    let filtering = arrFind.filter((el)=> el.name == "Dan")
+    console.log(filtering);
+    // for (let index = 0; index < arrStr.length; index++) {
+    //     const element = arrStr[index];
+    //     disPost.innerHTML += element
+    // }
+    arrStr.forEach((el, i)=>{
+        disPost.innerHTML += i + " " +el
+    })
+    console.log(arrStr);
+    arrStr.splice(1, 1)
+    console.log(arrStr);
+    arrStr.splice(1, 1, "This")
+    console.log(arrStr);
+    let arrArr = [["uiyt"], ["iuytr"], ["iouytr"]]
+    let arrNum = [2,3,4,5,6,7,8]
+
+    for (let index = 0; index < arrObj.length; index++) {
+        const element = arrObj[index];
+        disPost.innerHTML += element.name
+    }
+
+    let currUser= JSON.parse(localStorage.getItem("currUser"))
+    let title = document.getElementById("title")
+    let content = document.getElementById("content");
+    let imgURL;
+    console.log(imgURL);
+    console.log(currUser);
+    if(currUser == null){
+        alert("You're not logged in")
+        window.location.href = "login.html"
+    }
+    username.innerHTML = currUser.username;
+    function logout(){
+        localStorage.removeItem("currUser");
+        window.location.href = "login.html"
+    }
+    function pickFile(ev){
+        console.log(ev.target.files);
+        let file = ev.target.files[0];
+        let reader = new FileReader()
+        reader.addEventListener("load", (e)=>{
+            imgURL = e.target.result
+            img.src = imgURL
+        })
+        if(file){
+            reader.readAsDataURL(file)
+        }
+    }
+    let date = new Date()
+    let existingPost = JSON.parse(localStorage.getItem("post")) || []
+    console.log(existingPost);
+    function addPost(){
+        let data = {
+            author: currUser.username,
+            title: title.value,
+            content: content.value,
+            img: imgURL,
+            timePosted: `${date.getHours()} : ${date.getMinutes()} ${date.getHours() < 12 ? "AM" : "PM"}`,
+            isLiked: false
+        }
+        existingPost.push(data)
+        localStorage.setItem("post", JSON.stringify(existingPost))
+        alert("Post Successful")
+        showPost()
+    }
+    function showPost(){
+        for (let index = 0; index < existingPost.length; index++) {
+            const el = existingPost[index];
+            // disPost.innerHTML += el.content
+            // disPost.innerHTML += `<img src="${el.img}" />`
+            disPost.innerHTML += `
+                <div class="card">
+                    <div class="text-end">
+                        <button onclick="delPost(${index})" class="btn btn-danger btn-sm">&times;</button>    
+                    </div>
+                    <h3>${el.author}</h3>    
+                    <img class="w-100" src="${el.img}" />
+                    <p>${el.content}</p> 
+                    <div>
+                        <button>Like</button>    
+                        <button>Show more</button>    
+                        <button class="btn btn-${el.isLiked? "secondary": "primary"}" onclick="likePost(${index})">${el.isLiked? "UnLike" : "Like"}</button>    
+                        <button class="btn btn-${el.isLiked == true ? "success": "danger"}">Show more</button>    
+                    </div>
+                </div>
+            `
+        }
+        
+    }
+    showPost()
+    function delPost(i){
+        console.log(i);
+        existingPost.splice(i, 1)
+        localStorage.setItem("post", JSON.stringify(existingPost))
+        showPost()
+    }
+
+    function likePost(i){
+        console.log(existingPost[i]);
+        // console.log(existingPost[i].isLiked);
+        existingPost[i].isLiked = !existingPost[i].isLiked
+        localStorage.setItem("post", JSON.stringify(existingPost))
+        showPost()
+
+
+        // let found = existingPost.find((el)=> el[i] == i);
+        // console.log(found);
+    }
+</script>

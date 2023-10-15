@@ -12,24 +12,31 @@
     <button onclick="multiply()">click</button>
     <div id="div1"></div>
 
+    <button onclick="disPost">click</button>
+
 </body>
 <script>
-    let hh = document.getElementById("hh");
-    let yy = document.getElementById("yy");
-    let div1 = document.getElementById("div1");
-    const multiply = () => {
-        let num1 = Number(hh.value);
-        let num2 = Number(yy.value);
-        console.log("t")
-        for (let i = 0; i <= num2 ; i++) {
-            console.log(num2 * i);
-            div1.innerHTML += `${num1} x ${i} = ${num1 * i} <br>`;
-        }
+    // let hh = document.getElementById("hh");
+    // let yy = document.getElementById("yy");
+    // let div1 = document.getElementById("div1");
+    let arrStr = ["law", "doll", "red"]
+    // const multiply = () => {
+    //     let num1 = Number(hh.value);
+    //     let num2 = Number(yy.value);
+    //     console.log("t")
+    //     for (let i = 0; i <= num2 ; i++) {
+    //         console.log(num2 * i);
+    //         div1.innerHTML += `${num1} x ${i} = ${num1 * i} <br>`;
+    //     }
+    // }
+
+    // let changeIndex = 0
+    // let names = ["Lawrence", "Timilehin", "Daniel", "Akin", "Olamide"]
+
+
+
+    arrStr.map(el, i)=>{
+        disPost.innerHTML += i + " " +el
     }
-
-    let changeIndex = 0
-    let names = ["Lawrence", "Timilehin", "Daniel", "Akin", "Olamide"]
-
-    function 
 </script>
 </html>
