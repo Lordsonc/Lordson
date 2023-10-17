@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .body{
+            display: flex;
+            justify-content: center;
+        }
+        .phone_frame{
+            width: 230px;
+            height: 370px;
+            border-radius: 8px;
+            border: 2px solid lightgrey;
+            position: relative;
+        }
+        .lock_btn{
+            width: 3px;
+            height: 40px;
+            border-radius: 0 10px 10px 0;
+            position: absolute;
+            right: -15px;
+        }
+        .landing_page,
+        .lock_screen,
+        .pass_screen{
+            width: 100%;
+            height: 100%;
+            background-color: brown;
+            border-radius: 8px;
+            position: absolute;
+            right: 0;
+        }
+        .lock_screen{
+            background-color: black;
+        }
+        .pass_screen{
+            background-color: yellowgreen;
+        }
+        .pass_screen div{
+            display: flex;
+        }
+        .pass_screen .span{
+            width: 20px;
+            height: 20px;
+            background-color: grey;
+            border-radius: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main class="body">
+        <div class="phone_frame">
+            <button onclick="lockBtn()" class="lock_btn"></button>
+            <div id="landing_page" class="landing_page"></div>
+            <div id="lock_screen" class="lock_screen"></div>
+            <div id="pass_screen" class="pass_screen">
+                <div>
+                    <div class="span"></div>
+                    <div class="span"></div>
+                    <div class="span"></div>
+                    <div class="span"></div>
+                    <div class="span"></div>
+                    <div class="span"></div>
+                </div>
+                <button onclick="pressNum('1')">1</button>
+                <button onclick="pressNum('2')">2</button>
+                <button onclick="pressNum('3')">3</button>
+                <button onclick="pressNum('4')">4</button>
+                <button onclick="pressNum('5')">5</button>
+                <button onclick="pressNum('6')">6</button>
+                <button onclick="pressNum('7')">7</button>
+                <button onclick="pressNum('8')">8</button>
+                <button onclick="pressNum('9')">9</button>
+                <button onclick="pressNum('0')">0</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+<script>
+    let phone_password = "123456"
+    pass_screen.style.display = "none"
+    landing_page.style.display = "none"
+    lock_screen.style.display = "block"
+    let allSpan = document.querySelectorAll(".span")
+    function lockBtn(){
+        if(lock_screen.style.display == "block"){
+            lock_screen.style.display = "none"
+            pass_screen.style.display = "block"
+        }else{
+            lock_screen.style.display = "block"
+            pass_screen.style.display = "none"
+        }
+    }
+    let index = 0
+    let userPassword = ""
+    function pressNum(num){
+        // console.log(allSpan);
+        console.log(allSpan[index]);
+        allSpan[index].style.backgroundColor = "#fff"
+        index++;
+        userPassword += num
+        console.log(userPassword.length == 6);
+        console.log(userPassword);
+        console.log(phone_password);
+        console.log(userPassword.length == 6 && userPassword == phone_password);
+        if(userPassword.length == 6 && userPassword == phone_password){
+            console.log("iouytre");
+            console.log(userPassword.length == 6 && userPassword == phone_password, "oiuytresdfgtu");
+            pass_screen.style.display = "none"
+            landing_page.style.display = "block"
+        }
+
+    }
+    let todo = ["When", "How", "Then"]
+
+    function addTodo(dan){
+        setTimeout(()=>{
+            todo.push("Now")
+            dan()
+        }, 5000)
+    }
+    addTodo(dispTodo)
+
+    function dispTodo(){
+        todo.forEach(element => {
+            document.body.innerHTML += element + "<br/>"
+        });
+    }
+</script>
